@@ -1,0 +1,173 @@
+@import "constants";
+
+body {
+    font-family: Tahoma, Georgia, "Times New Roman", Times, serif;
+    font-weight: normal;
+    color: $beige;
+    font-size: 1.2em;
+}
+
+p {
+    line-height: 2.0em;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.strike {
+    text-decoration:line-through;
+}
+
+#content {
+    a:link {
+	color: $ltblue;
+	text-decoration: none;
+	border-bottom: 1px dotted $orange;
+    }
+    a:visited {
+	color: $ltblue;
+	text-decoration: none;
+	border-bottom: 1px dotted $tan;
+    }
+    a:active, a:hover {
+	color: #fff;
+	text-decoration: none;
+	border-bottom: 1px solid $ltblue;
+    }
+    a.feed:link, a.feed:visited, a.feed:active, a.feed:hover {
+	margin-left: 3px;
+	padding: 0 0 0 19px;
+	background: url("http://therecyclery.org/g/rss.png") no-repeat 0 50%;
+	border-bottom: none;
+    }
+    h1 {
+	font-family: "Union", "Lucida Grande","Arial Unicode MS", sans-serif;
+	font-weight: normal;
+	color: $orange;
+	height: 22px;
+	font-size: 22px;
+	margin: 0;
+    }
+    h2 {
+	font-family: "Lucida Grande","Arial Unicode MS", sans-serif;
+	font-weight: normal;
+	color: $mocha;
+	font-size: 14px;
+	margin-bottom: -.5em;
+    }
+    .postmeta {
+	margin-bottom: 2em;
+	font-size: 10px;
+	color: $tan;
+    }
+}
+#data {
+    color: #000;
+    font-family: Tahoma, Georgia, "Times New Roman", Times, serif;
+    font-weight: normal;
+    font-size: 16px;
+
+    a {
+	color: #0000FF;
+	text-decoration: none;
+    }
+    a:active, a:hover {
+	color: #000;
+	text-decoration: none;
+	border-bottom: 1px solid $ltblue;
+    }
+    h1 {
+	font-family: "Union", "Lucida Grande","Arial Unicode MS", sans-serif;
+	font-weight: normal;
+	color: $orange;
+	height: 22px;
+	font-size: 18px;
+	margin: 0;
+    }
+    h2 {
+	font-family: "Lucida Grande","Arial Unicode MS", sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+    }
+    .postmeta {
+	margin-bottom: 2em;
+	font-size: 10px;
+	color: $tan;
+    }
+    td {
+	padding-left: 10px;
+    }
+    td.label {
+	padding-left: 0px;
+	text-align: right;
+    }
+}
+div#error_explanation {
+    background-color: $tangerine;
+    border: 1px solid #000;
+    padding: 10px;
+
+    h2 {
+	color: red;
+	font-family: "Lucida Grande","Arial Unicode MS", sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+    }
+}
+
+.welcome {
+    font-family: "Union", "Lucida Grande","Arial Unicode MS", sans-serif;
+    color: #fff;
+    font-size: 14px;
+    padding-bottom: 22px;
+    background: url('http://therecyclery.org/g/hr.gif') no-repeat bottom;
+}
+
+.newsinfo {
+    font-size: 10px;
+    color: $brown;
+}
+
+#footer {
+    p {
+	color: $orange;
+	font-size: 10px;
+	font: Arial, Helvetica, sans-serif;
+    }
+    span {
+	color: $mocha;
+    }
+}
+
+#main-nav { 
+    li {
+	font-family: "Union", "Lucida Grande","Arial Unicode MS", sans-serif;
+	list-style: none;
+	margin-bottom: 5px;
+    }
+
+    a:link {
+	color: $dkbrown;
+	text-decoration: none;
+	padding-left: 14px;
+    }
+    a:visited {
+	color: $dkbrown;
+	text-decoration: none;
+	padding-left: 14px;
+    }
+    a:active, a:hover {
+	color: $tangerine;
+	text-decoration: none;
+	border-left: 4px solid #fc0;
+	padding-left: 10px;
+    }
+
+    li.selected-nav-item  a {
+	color: $orange;
+	text-decoration: none;
+	border-left: 4px solid $orange;
+	padding-left: 10px;
+    }
+}

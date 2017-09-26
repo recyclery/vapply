@@ -1,0 +1,35 @@
+<h1>Listing caseworkers</h1>
+
+<% if user_signed_in? && current_user.is_admin? -%>
+You have <%= Client.count_new(current_user.last_sign_in_at) %> new client applications.  <%#link_to "See client applications", :controller => :clients, :view => :recent %> <%=link_to "See client applications", recent_clients_path %>
+<% end -%>
+
+<div id="data">
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Organization</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Login</th>
+  </tr>
+
+<% @caseworkers.each do |caseworker| %>
+  <tr>
+    <td><%=h caseworker.name %></td>
+    <td><%=h caseworker.organization %></td>
+    <td><%=h caseworker.phone %></td>
+    <td><%=h caseworker.email %></td>
+    <td><%=h caseworker.user.email if caseworker.user %></td>
+    <td><%= link_to 'Show', caseworker %></td>
+    <td><%= link_to 'Edit', edit_caseworker_path(caseworker) %></td>
+    <td><%= link_to 'Destroy', caseworker, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+<br />
+
+<% if user_signed_in? && current_user.is_admin? && false -%>
+<%= link_to 'New caseworker', new_caseworker_path %>
+<% end -%>

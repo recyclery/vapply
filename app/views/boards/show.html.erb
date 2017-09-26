@@ -1,0 +1,12 @@
+<p>
+  <b>Admin:</b>
+  <%= @board.user.email if @board.user %>
+</p>
+
+<div class="board-text">
+  <%= @board.text %>
+</div>
+
+
+<%= link_to 'Edit', edit_board_path(@board) %> |
+<%= link_to 'Back', boards_path %>

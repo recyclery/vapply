@@ -1,0 +1,63 @@
+<h1>Client Application</h1>
+<div id="data">
+  <table>
+<% if current_user.is_admin? -%>
+    <tr>
+      <td class="label"><b>Ready for pickup:</b></td>
+      <td><font color='<%= @client.is_completed? ? 'green' : 'red' %>'><%=h @client.is_completed %></font></td>
+    </tr>
+<% elsif current_user.is_caseworker? && @client.is_completed?-%>
+    <tr>
+      <td colspan=2 align=center><font color="green"><b>Ready for pickup!</b></font></td>
+    </tr>
+<% end -%>
+    <tr>
+      <td class="label"><b>Name:</b></td>
+      <td><%=h @client.name %></td>
+    </tr><tr>
+      <td class="label"><b>Date:</b></td>
+      <td><%=h @client.fmt_date %></td>
+    </tr><tr>
+      <td class="label"><b>Sex:</b></td>
+      <td><%=h @client.sex %></td>
+    </tr><tr>
+      <td class="label"><b>Weight:</b></td>
+      <td><%=h @client.weight %></td>
+    </tr><tr>
+      <td class="label"><b>Age:</b></td>
+      <td><%=h @client.age %></td>
+    </tr><tr>
+      <td class="label"><b>Height:</b></td>
+      <td><%=h @client.height %></td>
+    </tr><tr>
+      <td class="label"><b>Biketype:</b></td>
+      <td><%=h @client.biketype %></td>
+    </tr><tr>
+      <td class="label"><b>Helmet:</b></td>
+      <td><%=h @client.helmet ? "needed" : "not needed" %></td>
+    </tr><tr>
+      <td class="label"><b>Lock:</b></td>
+      <td><%=h @client.lock ? "needed" : "not needed" %></td>
+    </tr><tr>
+      <td class="label"><b>Reason:</b></td>
+      <td><%=h @client.reason %></td>
+    </tr><tr>
+      <td class="label"><b>Ridden before:</b></td>
+      <td><%=h @client.ridden_before %></td>
+    </tr>
+<% if current_user.is_admin? -%>
+    <tr>
+      <td class="label"><b>Caseworker:</b></td>
+      <td><%=link_to @client.caseworker.name, @client.caseworker %></td>
+    </tr>
+<% end -%>
+  </table>
+
+</div>
+
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<% if current_user.is_caseworker? %>
+<%= link_to 'Back', clients_path %>
+<% elsif current_user.is_admin? -%>
+<%= link_to 'Back', recent_clients_path %>
+<% end -%>

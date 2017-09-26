@@ -1,0 +1,53 @@
+<h1>Your information</h1>
+
+<div id="data">
+<p>
+  <b>Name:</b>
+  <%=h @caseworker.name %>
+</p>
+
+<p>
+  <b>Organization:</b>
+  <%=h @caseworker.organization %>
+</p>
+
+<p>
+  <b>Address1:</b>
+  <%=h @caseworker.address1 %>
+</p>
+
+<p>
+  <b>Address2:</b>
+  <%=h @caseworker.address2 %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%=h @caseworker.phone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @caseworker.email %>
+</p>
+
+<% if current_user.is_admin? -%>
+<p>
+  <b>Limit:</b>
+  <%=h @caseworker.limit %>
+</p>
+<% end -%>
+</div>
+
+<% if @caseworker.can_add_clients? -%>
+<p>
+<%= link_to "Add Client Application", new_client_path %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_caseworker_path(@caseworker) %> |
+<% if user_signed_in? -%>
+<%= link_to 'Back', root_path %>
+<% else -%>
+<%= link_to 'Back', caseworkers_path %>
+<% end -%>

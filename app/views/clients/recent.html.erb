@@ -1,0 +1,31 @@
+<h1>New Applications</h1>
+
+<div> Your last login was at <%= current_user.last_sign_in_at %></div>
+<table>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Caseworker</th>
+    <th>Created at</th>
+  </tr>
+
+<% @clients.each do |client| %>
+  <tr>
+    <td><div style='color: red'><%= client.recent?(current_user.last_sign_in_at) ? "new" : "" %></div></td>
+    <td><%=link_to_client client %></td>
+    <td><%=link_to_caseworker client.caseworker %></td>
+    <td><%=h client.created_at %></td>
+
+    <td><%= link_to 'Show', client %></td>
+    <td><%= link_to 'Edit', edit_client_path(client) %></td>
+    <td><%= link_to 'Delete', client, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% unless current_user.is_admin? -%>
+<%= link_to 'New client', new_client_path %>
+<% end -%>
+<%= link_to 'Home', root_path %>

@@ -1,0 +1,12 @@
+<h1>Edit Your Details</h1>
+
+<div id="data">
+<%= render 'form' %>
+</div>
+
+<%= link_to 'Show', @caseworker %> |
+<% if user_signed_in? -%>
+<%= link_to 'Back', root_path %>
+<% else -%>
+<%= link_to 'Back', caseworkers_path %>
+<% end -%>

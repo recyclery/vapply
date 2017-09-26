@@ -1,0 +1,3 @@
+Could not find gem 'mysql2 (>= 0)' in any of the gem sources listed in your Gemfile.
+Run `bundle install` to install missing gems.
+

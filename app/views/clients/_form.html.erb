@@ -1,0 +1,98 @@
+<%= form_for(@client) do |f| %>
+  <% if @client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% @client.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :date %>
+<% if user_signed_in? -%>
+  <%= f.hidden_field :caseworker_id %>
+<% end -%>
+
+  <table>
+<% if current_user.is_admin? -%>
+    <tr>
+      <td><%= f.label :is_completed, "Status" %><br /></td>
+      <td class="field">
+	<%= f.select :is_completed, [["pending", false], ["ready for pickup", true]] %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= f.label :caseworker_id, "Caseworker" %><br /></td>
+      <td class="field"><%= f.collection_select :caseworker_id, Caseworker.all, :id, :name %></td>
+    </tr>
+<% end -%>
+    <tr>
+      <td><%= f.label :name, "Client name" %><br /></td>
+      <td class="field"><%= f.text_field :name %></td>
+    </tr><tr>
+      <td><%= f.label :sex, "Gender" %><br /></td>
+      <td class="field">
+	<%= f.select :sex, ["male", "female", "other"] %>
+      </td>
+    </tr><tr>
+      <td><%= f.label :weight %><br /></td>
+      <td class="field"><%= f.text_field :weight, :size => 5 %></td>
+    </tr><tr>
+      <td><%= f.label :age %><br /></td>
+      <td class="field"><%= f.text_field :age, :size => 5 %></td>
+    </tr><tr>
+      <td><%= f.label :height %><br /></td>
+      <td class="field"><%= f.text_field :height, :size => 5 %></td>
+    </tr><tr>
+      <td><%= f.label :biketype %><br /></td>
+      <td class="field">
+	<%= f.select :biketype, ["Any", "Mountain", "Road", "Cruiser"] %>
+      </td>
+    </tr><tr>
+      <td colspan=2>
+	Road Bikes have drop handlebars and skinny tires.<br />
+	Mountain bikes have straight handlebars and thick knobby tires.<br />
+	Cruiser bikes are made for upright city riding.
+      </td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <td>
+	<%= f.label :helmet, "Does the client need a helmet?" %>
+      </td>
+      <td>
+	<%= f.select :helmet, [["yes", true], ["no", false]] %>
+      </td>
+    </tr><tr>
+      <td>
+	<%= f.label :lock, "Does the client need a lock?" %>
+      </td>
+      <td>
+	<%= f.select :lock, [["yes", true], ["no", false]] %>
+      </td>
+    </tr><tr>
+      <td colspan=2>
+	<%= f.label :reason, "Why does the client need a bike?"%><br />
+      </td>
+    </tr><tr>
+      <td colspan=2>
+	<%= f.text_area :reason, :rows => 5 %>
+      </td>
+    </tr><tr>
+      <td>
+	<%= f.label :ridden_before, "Have they ridden a bike before?" %>
+      </td>
+      <td class="field">
+	<%= f.select :ridden_before, [["yes", true], ["no", false]] %>
+      </td>
+    </tr>
+  </table>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

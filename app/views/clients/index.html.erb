@@ -1,0 +1,60 @@
+
+
+<h1>Clients</h1>
+<% if current_user.is_caseworker? -%>
+<p>
+  <b>You can apply for a maximum of <%= current_user.caseworker.limit %> clients at a time.</b>
+</p>
+<% end -%>
+<div id="data">
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Application Filled</th>
+<% if current_user.is_admin? -%>
+    <th>Sex</th>
+    <th>Weight</th>
+    <th>Age</th>
+    <th>Height</th>
+    <th>Biketype</th>
+    <th>Helmet</th>
+    <th>Lock</th>
+    <th>Caseworker</th>
+<% end -%>
+    <th>Status</th>
+  </tr>
+
+<% @clients.each do |client| %>
+  <tr>
+    <td><%=link_to_client client %></td>
+    <td><%=h client.fmt_date %></td>
+<% if current_user.is_admin? -%>
+    <td><%=h client.sex %></td>
+    <td><%=h client.weight %></td>
+    <td><%=h client.age %></td>
+    <td><%=h client.height %></td>
+    <td><%=h client.biketype %></td>
+    <td><%=h client.helmet ? "needs helmet" : "not required" %></td>
+    <td><%=h client.lock ? "needs lock" : "not required" %></td>
+    <td><%=link_to_caseworker client.caseworker %></td>
+<% end -%>
+    <td><font color="<%= client.is_completed? ? 'green' : 'red' %>"><%= client.is_completed? ? "complete!" : "pending" %></font></td>
+    <td>
+      <%= link_to 'Show', client %>
+      <%= link_to 'Edit', edit_client_path(client) %>
+      <%= link_to 'Delete', client, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+<br />
+
+<% if current_user.is_caseworker? && current_user.caseworker.can_add_clients? -%>
+<%= link_to 'New client', new_client_path %>
+<%# elsif current_user.is_admin? -%>
+<%# link_to 'New client', new_client_path %>
+<% end -%>
+<%= link_to 'Home', root_path %>
