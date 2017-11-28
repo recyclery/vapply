@@ -13,18 +13,20 @@
 
   <div id="user_nav">
     <% if user_signed_in? -%>
-    Signed in as <%= current_user.email %>.
-    <% if current_user.is_admin? -%>You are admin.<% end -%>
-    Not you? <%= link_to "Sign Out", destroy_user_session_path, {:method => :delete } %>
+      Signed in as <%= current_user.email %>.
+      <% if current_user.is_admin? -%>
+        You are admin.
+      <% end -%>
+      Not you? <%= link_to("Sign Out", destroy_user_session_path, method: :delete)%>
     <% else -%>
-    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>.
+      <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>.
     <% end -%>
   </div>
 
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
-       <% link_to "Sign Out", destroy_user_session_path -%>
+  <% link_to "Sign Out", destroy_user_session_path, {method: :delete} -%>
 
 <%= yield %>
 </div>

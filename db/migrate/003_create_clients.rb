@@ -1,4 +1,4 @@
-class CreateClients < ActiveRecord::Migration
+class CreateClients < ActiveRecord::Migration[5.1]
   def change
     create_table :clients do |t|
       t.string :name
@@ -12,11 +12,10 @@ class CreateClients < ActiveRecord::Migration
       t.boolean :lock
       t.text :reason
       t.boolean :ridden_before
-      t.references :caseworker
+      t.references :caseworker, foreign_key: true
       t.datetime :completed_at
 
       t.timestamps
     end
-    add_index :clients, :caseworker_id
   end
 end

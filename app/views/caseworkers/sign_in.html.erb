@@ -6,7 +6,6 @@
 You have <%= Client.count_new(current_user.last_sign_in_at) %> new client applications.  <%#link_to "See client applications", :controller => :clients, :view => :recent %> <%=link_to "See client applications", recent_clients_path %>
 <div><%= link_to "Show caseworkers", caseworkers_path %></div>
 <% if false -%><div><%= link_to "Add a new caseworker", new_client_path %></div><% end -%>
-<div><%= link_to "Dev Board", boards_path %></div>
 <% elsif user_signed_in? && current_user.caseworker.name -%>
 <!-- Caseworker sees this -->
 <br />

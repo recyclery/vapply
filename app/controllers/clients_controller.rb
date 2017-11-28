@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
   def index
     if user_signed_in? && current_user.is_admin? then
       @clients = Client.all
-    elsif user_signed_in? && current_user.is_caseworker? then 
+    elsif user_signed_in? && current_user.is_caseworker? then
       @clients = current_user.caseworker.clients
     end
 
@@ -65,13 +65,12 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
-    @client = Client.new(params[:client])
+    @client = Client.new(client_params)
     authorize! :create, @client
 
     respond_to do |format|
       if not @client.caseworker.can_add_clients?
-        @client.errors[:base] << 
-          "You are past your limit.  Please come back later."
+        @client.errors[:base] << "You are past your limit.  Please come back later."
         format.html { render :action => "new" }
         format.json { render :json => @client.errors, :status => :unprocessable_entity }
       elsif @client.save
@@ -91,7 +90,7 @@ class ClientsController < ApplicationController
     authorize! :update, @client
 
     respond_to do |format|
-      if @client.update_attributes(params[:client])
+      if @client.update_attributes(client_params)
         format.html { redirect_to @client, :notice => 'Client was successfully updated.' }
         format.json { head :ok }
       else
@@ -112,5 +111,24 @@ class ClientsController < ApplicationController
       format.html { redirect_to clients_url }
       format.json { head :ok }
     end
+  end
+
+  private
+
+  def client_params
+    params.require(:client).permit(
+       :date,
+       :caseworker_id,
+       :name,
+       :sex,
+       :weight,
+       :age,
+       :height,
+       :biketype,
+       :helmet,
+       :lock,
+       :reason,
+       :ridden_before
+    )
   end
 end

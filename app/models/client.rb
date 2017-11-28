@@ -1,6 +1,6 @@
-class Client < ActiveRecord::Base
+class Client < ApplicationRecord
   belongs_to :caseworker
-  validates :name, :caseworker_id, :presence => true
+
 
   def self.count_new(last_seen)
     all.select { |c| c.recent?(last_seen) }.count

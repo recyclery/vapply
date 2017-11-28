@@ -39,7 +39,7 @@
 <% end -%>
 </div>
 
-<% if @caseworker.can_add_clients? -%>
+<% if can? :add, Client -%>
 <p>
 <%= link_to "Add Client Application", new_client_path %>
 </p>

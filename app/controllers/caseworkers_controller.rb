@@ -82,7 +82,7 @@ class CaseworkersController < ApplicationController
     authorize! :update, @caseworker
 
     respond_to do |format|
-      if @caseworker.update_attributes(params[:caseworker])
+      if @caseworker.update_attributes(caseworker_params)
         format.html { redirect_to @caseworker, :notice => 'Caseworker was successfully updated.' }
         format.json { head :ok }
       else
@@ -103,5 +103,11 @@ class CaseworkersController < ApplicationController
       format.html { redirect_to caseworkers_url }
       format.json { head :ok }
     end
+  end
+
+  private
+
+  def caseworker_params
+    params.require(:caseworker).permit(:name, :organization, :address1, :address2, :phone, :email)
   end
 end

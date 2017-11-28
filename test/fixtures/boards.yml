@@ -1,9 +1,9 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: 
+  user: one
   text: MyText
 
 two:
-  user: 
+  user: two
   text: MyText

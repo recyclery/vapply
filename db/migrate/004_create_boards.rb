@@ -1,12 +1,10 @@
-class CreateBoards < ActiveRecord::Migration
+class CreateBoards < ActiveRecord::Migration[5.1]
   def change
     create_table :boards do |t|
-      t.references :user
+      t.references :user, foreign_key: true
       t.text :text
 
       t.timestamps
     end
-
-    add_index :boards, :user_id
   end
 end

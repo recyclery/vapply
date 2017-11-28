@@ -1,25 +1,25 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: Casey
-  organization: "Casey's helpers"
-  address1: "123 Road Lane"
-  address2: 
-  phone: "332 231 2312"
-  email: "example@example.com"
-  limit: 3
-  created_at: "2011-10-28 19:12:18"
-  updated_at: "2011-10-28 19:12:18"
-  user: one
+  name: MyString
+  organization: MyString
+  address1: MyString
+  address2: MyString
+  phone: MyString
+  email: MyString
+  limit: 1
+  user_id: 1
+  created_at: 2017-09-26 15:29:36
+  updated_at: 2017-09-26 15:29:36
 
 two:
-  name: Worky
-  organization: "Worky's aid"
-  address1: "124 Road Lane"
-  address2: 
-  phone: "312 231 2313"
-  email: "worky@example.com"
-  limit: 3
-  created_at: "2011-10-28 19:12:18"
-  updated_at: "2011-10-28 19:12:18"
-  user: two
+  name: MyString
+  organization: MyString
+  address1: MyString
+  address2: MyString
+  phone: MyString
+  email: MyString
+  limit: 1
+  user_id: 1
+  created_at: 2017-09-26 15:29:36
+  updated_at: 2017-09-26 15:29:36

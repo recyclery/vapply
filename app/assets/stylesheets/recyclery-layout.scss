@@ -1,0 +1,86 @@
+@import "constants";
+
+html, body {
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: $mocha;
+/*    background: #d9c789 url(http://therecyclery.org/g/bk.jpg) repeat-y; */
+}
+
+img {
+    border: 6px solid #371C00;
+}
+
+#wrapper {
+  width: 75%;
+  margin: 0 auto;
+  background-color: #532900;
+  padding: 20px 40px;
+  border: solid 1px black;
+  margin-top: 20px;
+}
+
+#content {
+}
+
+#data {
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px 40px;
+  border: solid 1px black;
+  margin-top: 20px;
+}
+
+div.board-text {
+  color: #000;
+  background-color: #fff;
+  padding: 20px 40px;
+  border: solid 1px black;
+  margin-top: 20px;
+}
+
+#logowrapper {
+    position: relative;
+    top: 43px;
+    left: 44px;
+}
+
+#logo {
+    display: block;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    height: 121px;
+    width: 159px;
+}
+
+.alt {
+    display: none;
+}
+
+a#logo {
+    height: 121px;
+    width: 159px;
+    background: url(http://therecyclery.org/g/logo.gif) no-repeat;
+}
+
+
+#footer {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    margin:0;
+    background: url('http://therecyclery.org/g/hr2.gif') no-repeat top;
+}
+
+#nav {
+    margin: 0;
+    padding: 0;
+    float:left;
+    width: 358px;
+    height: 492px;
+    background: url(http://therecyclery.org/g/rightbk.jpg) no-repeat;
+}
+
